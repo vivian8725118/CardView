@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="285dp"
+              android:layout_height="wrap_content"
+              android:gravity="center_horizontal"
+              android:orientation="vertical"
+              android:paddingTop="20dp">
+
+    <RelativeLayout
+        android:id="@+id/top"
+        android:layout_width="285dp"
+        android:layout_height="286dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp">
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="271dp"
+            android:layout_height="246dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginRight="17dp"
+            android:layout_marginTop="17dp"
+            android:background="@drawable/circle_retangle"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="B站发展至今，已经不只是一个亚文化兴趣社群，已已经成为了一个为有创造力的年轻人提供创作环境和连接已经成为了一个为有创造力的年轻人提供创作环境和连接经成为了一个为有创造力的年轻人提供创作环境和连接功能的服务平台。如果想要了解现在的年轻人，去 B 站补番刷梗，可能会是最快的办法。如果想要成为一个有创造力的公司。"
+            android:textColor="@android:color/white"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/center"
+        android:layout_width="285dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_height="10dp"
+        android:layout_gravity="center_horizontal"></ImageView>
+
+    <EditText
+        android:id="@+id/comment"
+        android:layout_width="285dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:gravity="left"
+        android:hint="请输入评论"
+        android:maxLines="5"
+        android:minLines="2"
+        android:padding="20dp"
+        android:textSize="12sp"/>
+</LinearLayout>

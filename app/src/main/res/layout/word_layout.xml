@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:paddingTop="20dp"
+              android:background="@android:color/white"
+              android:gravity="center_horizontal"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_weight="1"
+        android:background="@drawable/top_3x">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/circle_retangle"
+            android:gravity="center_vertical"
+            android:maxWidth="250dp"
+            android:padding="10dp"
+            android:text="B站发展至今，已经不只是一个亚文化兴趣社群，已经成为了一个为有创造力的年轻人提供创作环境和连接功能的服务平台。如果想要了解现在的年轻人，去 B 站补番刷梗，可能会是最快的办法。如果想要成为一个有创造力的公司，去 B 站招人，可能会是你不错的选择。"
+            android:textColor="@android:color/white"/>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/center_layout"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/center_3x"/>
+
+    <RelativeLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginRight="42dp"
+        android:layout_weight="0.5"
+        android:background="@drawable/bottom_3x">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
+            android:maxWidth="250dp"
+            android:text="B站发展至今，已经不只是一个亚文化兴趣社群，已已经成为了一个为有创造力的年轻人提供创作环境和连接已经成为了一个为有创造力的年轻人提供创作环境和连接经成为了一个为有创造力的年轻人提供创作环境和连接功能的服务平台。如果想要了解现在的年轻人，去 B 站补番刷梗，可能会是最快的办法。如果想要成为一个有创造力的公司，去 B 站招人，可能会是你不错的选择。"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="12sp"/>
+    </RelativeLayout>
+</LinearLayout>
