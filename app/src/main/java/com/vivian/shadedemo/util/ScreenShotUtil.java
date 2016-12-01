@@ -33,7 +33,7 @@ public class ScreenShotUtil {
      * @param view
      * @return
      */
-    public Bitmap convertViewToBitmap(View view) {
+    public static Bitmap convertViewToBitmap(View view) {
         view.setDrawingCacheEnabled(true);
         view.buildDrawingCache();  //启用DrawingCache并创建位图
         Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache()); //创建一个DrawingCache的拷贝，因为DrawingCache得到的位图在禁用后会被回收
@@ -64,7 +64,7 @@ public class ScreenShotUtil {
      * @param context
      * @param bitmap
      */
-    public void saveImageToGallery(Context context, Bitmap bitmap) {
+    public static void saveImageToGallery(Context context, Bitmap bitmap) {
         // Create screenshot directory if it doesn't exist
         String dirName = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) + File.separator + "TMT";
         File fileDir = new File(dirName);

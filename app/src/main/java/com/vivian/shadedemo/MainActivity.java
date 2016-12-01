@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.vivian.shadedemo.adapter.CardViewAdapter;
-import com.vivian.shadedemo.anim.RecyclerViewItemAnimator;
 import com.vivian.shadedemo.entity.Card;
 
 import java.util.ArrayList;
@@ -46,7 +45,5 @@ public class MainActivity extends AppCompatActivity {
         }
         mAdapter.setData(mList);
         mAdapter.notifyDataSetChanged();
-
-        mRecyclerView.setItemAnimator(new RecyclerViewItemAnimator());
     }
 }
