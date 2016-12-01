@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -37,8 +38,6 @@ public class CardView extends LinearLayout {
     CenterDrawable centerDrawable;
     BottomDrawable bottomDrawable;
 
-    int color;
-
     public CardView(Context context) {
         super(context);
         init(context);
@@ -59,39 +58,57 @@ public class CardView extends LinearLayout {
         init(context);
     }
 
-    public void init(Context context) {
-        LinearLayout layout = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.card, null);
-        layout.setLayoutParams(new LinearLayout.LayoutParams(ScreenSizeUtil.Dp2Px(getContext(),285),LayoutParams.WRAP_CONTENT));
-        int width = ScreenSizeUtil.getScreenWidth(context) - 300;
+    public void init(final Context context) {
+      final  LinearLayout layout = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.card, null);
+        layout.setLayoutParams(new LinearLayout.LayoutParams(ScreenSizeUtil.Dp2Px(getContext(), 285), LayoutParams.WRAP_CONTENT));
+       final int width = ScreenSizeUtil.getScreenWidth(context) - 300;
+        layout.setLayerType(View.LAYER_TYPE_SOFTWARE, null);//没有这句不显示
 
         topLayout = (RelativeLayout) layout.findViewById(R.id.top);
-        topDrawable=new TopDrawable(width, ScreenSizeUtil.Dp2Px(context,286));
-        topLayout.setBackground(topDrawable);
-        content=(TextView)layout.findViewById(R.id.content);
-
         centerLayout = (ImageView) layout.findViewById(R.id.center);
-        centerDrawable=new CenterDrawable(width, ScreenSizeUtil.Dp2Px(context, 10), BitmapFactory.decodeResource(getResources(), R.drawable.quote));
-        centerLayout.setImageDrawable(centerDrawable);
-
-        bottomDrawable = new BottomDrawable(width, 200);
+        content = (TextView) layout.findViewById(R.id.content);
         comment = (EditText) layout.findViewById(R.id.comment);
-        comment.setBackground(bottomDrawable);
+
+        post(new Runnable() {
+            @Override
+            public void run() {
+                topDrawable = new TopDrawable(width, ScreenSizeUtil.Dp2Px(context, 286));
+                topLayout.setBackground(topDrawable);
+
+                centerDrawable = new CenterDrawable(width, ScreenSizeUtil.Dp2Px(context, 10), BitmapFactory.decodeResource(getResources(), R.drawable.quote));
+                centerLayout.setImageDrawable(centerDrawable);
+
+                bottomDrawable = new BottomDrawable(width, 200);
+                comment.setBackground(bottomDrawable);
+            }
+        });
+
         addView(layout);
     }
 
-    public void changeTheme(int color){
-        //文字背景颜色
-        GradientDrawable myGrad = (GradientDrawable)content.getBackground();
-        myGrad.setColor(color);
-        //顶部阴影颜色
-        topDrawable.setColor(color);
-        topLayout.setBackground(topDrawable);
-        //中部阴影颜色
-        centerDrawable.setColor(color);
-        centerLayout.setBackground(centerDrawable);
-        //底部阴影颜色
-        bottomDrawable.setColor(color);
-        comment.setBackground(bottomDrawable);
-        invalidate();
+    public void changeTheme(final int color){
+        post(new Runnable() {
+            @Override
+            public void run() {
+                //文字背景颜色
+                GradientDrawable myGrad = (GradientDrawable)content.getBackground();
+                myGrad.setColor(color);
+                //顶部阴影颜色
+                topDrawable.setColor(color);
+                topLayout.setBackground(topDrawable);
+                //中部阴影颜色
+                centerDrawable.setColor(color);
+                centerLayout.setBackground(centerDrawable);
+                //底部阴影颜色
+                bottomDrawable.setColor(color);
+                comment.setBackground(bottomDrawable);
+                invalidate();
+            }
+        });
+    }
+
+    @Override
+    public boolean hasOverlappingRendering() {
+        return false;
     }
 }

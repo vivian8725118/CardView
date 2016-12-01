@@ -49,10 +49,10 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.content.setText(mData.get(position).getContent());
         //设置颜色变化
-        ((CardView)holder.itemView).changeTheme(colors[position % 6]);
+        ((CardView) holder.itemView).changeTheme(colors[position % 6]);
     }
 
     @Override

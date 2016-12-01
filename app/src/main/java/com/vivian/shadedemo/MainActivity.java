@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     public void initViewRecyclerView() {
         LinearLayout view = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.activity_main_recyclerview, null);
         setContentView(view);
-        view.setLayerType(View.LAYER_TYPE_SOFTWARE, null);//没有这句不显示
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
