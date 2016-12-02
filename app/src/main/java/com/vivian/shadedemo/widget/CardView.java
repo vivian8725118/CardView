@@ -37,6 +37,7 @@ public class CardView extends LinearLayout {
     TopDrawable topDrawable;
     CenterDrawable centerDrawable;
     BottomDrawable bottomDrawable;
+    GradientDrawable myGrad;
 
     public CardView(Context context) {
         super(context);
@@ -59,52 +60,37 @@ public class CardView extends LinearLayout {
     }
 
     public void init(final Context context) {
-      final  LinearLayout layout = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.card, null);
+        LinearLayout layout = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.card, null);
         layout.setLayoutParams(new LinearLayout.LayoutParams(ScreenSizeUtil.Dp2Px(getContext(), 285), LayoutParams.WRAP_CONTENT));
-       final int width = ScreenSizeUtil.getScreenWidth(context) - 300;
         layout.setLayerType(View.LAYER_TYPE_SOFTWARE, null);//没有这句不显示
 
         topLayout = (RelativeLayout) layout.findViewById(R.id.top);
         centerLayout = (ImageView) layout.findViewById(R.id.center);
         content = (TextView) layout.findViewById(R.id.content);
         comment = (EditText) layout.findViewById(R.id.comment);
+        myGrad = (GradientDrawable) content.getBackground();
 
-        post(new Runnable() {
-            @Override
-            public void run() {
-                topDrawable = new TopDrawable(width, ScreenSizeUtil.Dp2Px(context, 286));
-                topLayout.setBackground(topDrawable);
+        topDrawable = new TopDrawable();
+        topLayout.setBackground(topDrawable);
 
-                centerDrawable = new CenterDrawable(width, ScreenSizeUtil.Dp2Px(context, 10), BitmapFactory.decodeResource(getResources(), R.drawable.quote));
-                centerLayout.setImageDrawable(centerDrawable);
+        centerDrawable = new CenterDrawable(BitmapFactory.decodeResource(getResources(), R.drawable.quote));
+        centerLayout.setBackground(centerDrawable);
 
-                bottomDrawable = new BottomDrawable(width, 200);
-                comment.setBackground(bottomDrawable);
-            }
-        });
+        bottomDrawable = new BottomDrawable();
+        comment.setBackground(bottomDrawable);
 
         addView(layout);
     }
 
-    public void changeTheme(final int color){
-        post(new Runnable() {
-            @Override
-            public void run() {
-                //文字背景颜色
-                GradientDrawable myGrad = (GradientDrawable)content.getBackground();
-                myGrad.setColor(color);
-                //顶部阴影颜色
-                topDrawable.setColor(color);
-                topLayout.setBackground(topDrawable);
-                //中部阴影颜色
-                centerDrawable.setColor(color);
-                centerLayout.setBackground(centerDrawable);
-                //底部阴影颜色
-                bottomDrawable.setColor(color);
-                comment.setBackground(bottomDrawable);
-                invalidate();
-            }
-        });
+    public void changeTheme(final int color) {
+        //文字背景颜色
+        myGrad.setColor(color);
+        //顶部阴影颜色
+        topDrawable.setColor(color);
+        //中部阴影颜色
+        centerDrawable.setColor(color);
+        //底部阴影颜色
+        bottomDrawable.setColor(color);
     }
 
     @Override

@@ -6,6 +6,7 @@ import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PixelFormat;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 
 /**
@@ -21,17 +22,12 @@ import android.graphics.drawable.Drawable;
 public class TopDrawable extends Drawable {
     Paint paint;
     Paint paintShadow;
-    int width = 400;
-    int height = 400;
     Path path;
     int x = 20;
     int y = 20;
-    int color=0x2601a3a1;
+    int color = 0x2601a3a1;
 
-    public TopDrawable(int width, int height) {
-        this.width = width;
-        this.height = height;
-
+    public TopDrawable() {
         paint = new Paint();
         paint.setColor(Color.WHITE);
         paint.setAntiAlias(true);
@@ -43,28 +39,23 @@ public class TopDrawable extends Drawable {
         path = new Path();
     }
 
-    public void setColor(int color){
-        this.color=color;
+    public void setColor(int color) {
+        this.color = color;
+        // 设定阴影(柔边, X 轴位移, Y 轴位移, 阴影颜色)
+        paintShadow.setShadowLayer(21, 0, 10, color & 0x26ffffff);//0x2600A4A0
+        invalidateSelf();
     }
 
     @Override
     public void draw(Canvas canvas) {
-        // 设定阴影(柔边, X 轴位移, Y 轴位移, 阴影颜色)
-        paintShadow.setShadowLayer(21, 0, 10, color&0x26ffffff);//0x2600A4A0
-
-        path.addRoundRect(x, y, width - x, height, new float[]{6, 6, 6, 6, 0, 0, 0, 0}, Path.Direction.CW);
         canvas.drawPath(path, paintShadow);
-
-        canvas.drawRect(x, height, width - x, height + 21, paint);
-        setBounds(x,y,width,height);
+        canvas.drawRect(x, getBounds().height(), getBounds().width() - x, getBounds().height() + 21, paint);
     }
 
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
+    @Override
+    public void onBoundsChange(Rect bounds) {
+        path.reset();
+        path.addRoundRect(x, y, bounds.width() - x, bounds.height(), new float[]{6, 6, 6, 6, 0, 0, 0, 0}, Path.Direction.CW);
     }
 
     @Override
@@ -74,16 +65,6 @@ public class TopDrawable extends Drawable {
 
     @Override
     public void setColorFilter(ColorFilter colorFilter) {
-    }
-
-    @Override
-    public int getIntrinsicHeight() {
-        return height;
-    }
-
-    @Override
-    public int getIntrinsicWidth() {
-        return width;
     }
 
     @Override

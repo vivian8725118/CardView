@@ -11,7 +11,16 @@ package com.vivian.shadedemo.entity;
  */
 
 public class Card {
-    public String content;
+    private String content;
+    private String comment = "";
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 
     public String getContent() {
         return content;
