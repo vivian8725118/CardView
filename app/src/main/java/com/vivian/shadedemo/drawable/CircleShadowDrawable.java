@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
-import android.view.View;
 
 import com.vivian.shadedemo.R;
 
@@ -30,7 +29,7 @@ public class CircleShadowDrawable extends Drawable {
 
     public CircleShadowDrawable(Context context){
         mContext=context;
-        bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.top);
+//        bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.top_selector);
     }
     @Override
     public void draw(Canvas canvas) {

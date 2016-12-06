@@ -87,9 +87,9 @@ public class CardView extends LinearLayout {
         myGrad.setColor(color);
         //顶部阴影颜色
         topDrawable.setColor(color);
-        //中部阴影颜色
+//        中部阴影颜色
         centerDrawable.setColor(color);
-        //底部阴影颜色
+//        //底部阴影颜色
         bottomDrawable.setColor(color);
     }
 

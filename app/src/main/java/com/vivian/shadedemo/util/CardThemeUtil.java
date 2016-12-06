@@ -8,6 +8,7 @@ import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 /**
@@ -34,7 +35,7 @@ public class CardThemeUtil {
                 0, 0, 0, 1, 0};
         ColorMatrix matrix = new ColorMatrix(src);
         ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
-        Drawable drawable = context.getDrawable(res);
+        Drawable drawable = ContextCompat.getDrawable(context,res);
         drawable.setColorFilter(filter);
         return drawable;
     }

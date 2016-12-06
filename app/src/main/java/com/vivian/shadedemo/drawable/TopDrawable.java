@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 
 /**
@@ -23,6 +24,7 @@ public class TopDrawable extends Drawable {
     Paint paint;
     Paint paintShadow;
     Path path;
+    RectF rectF;
     int x = 20;
     int y = 20;
     int color = 0x2601a3a1;
@@ -55,7 +57,8 @@ public class TopDrawable extends Drawable {
     @Override
     public void onBoundsChange(Rect bounds) {
         path.reset();
-        path.addRoundRect(x, y, bounds.width() - x, bounds.height(), new float[]{6, 6, 6, 6, 0, 0, 0, 0}, Path.Direction.CW);
+        rectF = new RectF(x, y, bounds.width() - x, bounds.height());
+        path.addRoundRect(rectF, new float[]{6, 6, 6, 6, 0, 0, 0, 0}, Path.Direction.CW);
     }
 
     @Override
